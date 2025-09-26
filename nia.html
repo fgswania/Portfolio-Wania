@@ -1,0 +1,734 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="logonia.png" />
+    <title>Wania Baig</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #ff8c42;
+        --secondary-color: #1a1a1a;
+        --accent-color: #2d2d2d;
+        --text-color: #ffffff;
+        --light-text: #b0b0b0;
+        --border-color: #444444;
+      }
+
+      [data-theme="dark"] {
+        --primary-color: #ff8c42;
+        --secondary-color: #121212;
+        --accent-color: #1e1e1e;
+        --text-color: #ffffff;
+        --light-text: #888888;
+        --border-color: #333333;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+        color: var(--text-color);
+      }
+
+      .navbar {
+        background-color: rgba(26, 26, 26, 0.95);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        padding: 15px 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .nav-link {
+        color: var(--light-text);
+        font-weight: 500;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        padding: 90px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-image {
+        border-radius: 50%;
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border: 5px solid var(--primary-color);
+        box-shadow: 0 15px 40px rgba(255, 140, 66, 0.3);
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 50px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      .skill-card {
+        background-color: var(--accent-color);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .project-card {
+        background-color: var(--accent-color);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #e67e22;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      .social-icon:hover {
+        background-color: #e67e22;
+        transform: translateY(-5px);
+      }
+
+      .progress {
+        height: 10px;
+        background-color: var(--border-color);
+        border-radius: 5px;
+      }
+
+      .progress-bar {
+        background-color: var(--primary-color);
+        border-radius: 5px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        background-color: var(--accent-color);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 15px;
+        color: var(--text-color);
+        margin-bottom: 20px;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: var(--light-text);
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+      }
+
+      .theme-toggle {
+        cursor: pointer;
+        color: var(--light-text);
+        transition: color 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--primary-color);
+      }
+
+      .badge {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .tech-tag {
+        display: inline-block;
+        background-color: rgba(255, 140, 66, 0.2);
+        color: var(--primary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .project-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .project-links a:hover {
+        color: #e67e22;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 30px;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-image {
+          width: 180px;
+          height: 180px;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Portfolio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+      <div class="container text-center">
+        <img src="nia.jpg" alt="Your Profile" class="hero-image mb-4" />
+        <h1 class="display-4 fw-bold mb-3">Hello, I'm Wania</h1>
+        <p class="lead mb-4">Full Stack Developer & Creative Problem Solver</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#contact" class="btn btn-primary px-4 py-2">Hire Me</a>
+          <a href="#projects" class="btn btn-outline-secondary px-4 py-2"
+            >View Projects</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 mt-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-12">About Me</h2>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-8 mb-lg-0">
+            <p class="fs-5 lh-base">
+              I’m a full-stack developer passionate about building modern,
+              user-friendly digital experiences 🌐. What started as curiosity
+              about how things work turned into a career where I combine
+              technical skills with creativity to craft solutions that not only
+              perform well but also feel great to use.
+            </p>
+            <p class="fs-5 lh-base">
+              I enjoy taking on challenges, exploring new technologies, and
+              continuously growing as a developer 💻✨.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="skill-card">
+              <h4 class="mb-4">Key Expertise</h4>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong>Frontend:</strong> HTML5, CSS3, JavaScript, Bootstrap
+                  and (learning React, Vue)
+                </li>
+                <li class="mb-3">
+                  <strong>Backend:</strong> Python, PHP, C#, Java
+                </li>
+                <li class="mb-3">
+                  <strong>Databases:</strong> MySQL, Sql Server
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-dark-subtle mt-5">
+      <div class="container">
+        <h2 class="section-title text-center mt-3">Technical Skills</h2>
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <div class="skill-card h-100">
+              <h4 class="mb-4">Frontend Development</h4>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>HTML5/CSS3</span>
+                  <span>95%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 95%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>JavaScript</span>
+                  <span>90%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>React.js</span>
+                  <span>45%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 45%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5">
+            <div class="skill-card h-100">
+              <h4 class="mb-4">Backend Development</h4>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Python</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>PHP</span>
+                  <span>82%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 82%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-0">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>C#/Java</span>
+                  <span>78%</span>
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 78%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16">
+      <div class="container">
+        <h2 class="section-title text-center mt-3">Projects</h2>
+        <div class="row justify-content-center">
+          <!-- Project 1 -->
+          <div class="col-lg-6 col-md-6 mb-6">
+            <div class="project-card h-100">
+              <div class="position-relative">
+                <img
+                  src="quickbite.png"
+                  alt="Food delivery"
+                  class="project-image"
+                />
+                <div class="project-overlay">
+                  <div class="text-center">
+                    <h5 class="text-white mb-3">Restaurant Website</h5>
+                    <div class="project-links">
+                      <a href="https://github.com/fgswania/QuickBite.git"
+                        ><i class="fab fa-github"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h5 class="mb-2">Restaurant Website</h5>
+                <p class="mb-3">
+                  A full-featured online store built with React and Node.js,
+                  featuring payment integration and admin dashboard.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <a
+                    href="https://quick-bite-opal.vercel.app/"
+                    class="btn btn-primary btn-sm"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="https://github.com/fgswania/QuickBite.git"
+                    class="btn btn-outline-secondary btn-sm"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="col-lg-6 col-md-6 mb-6">
+            <div class="project-card h-100">
+              <div class="position-relative">
+                <img
+                  src="pawsome.png"
+                  alt="Website Template"
+                  class="project-image"
+                />
+                <div class="project-overlay">
+                  <div class="text-center">
+                    <h5 class="text-white mb-3">Pawsome Pet Website</h5>
+                    <div class="project-links">
+                      <a href="https://github.com/fgswania/PawsomeCare.git"
+                        ><i class="fab fa-github"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h5 class="mb-2">Pawsome Pet Website</h5>
+                <p class="mb-3">
+                  A customizable portfolio template designed for developers and
+                  creatives, featuring dark mode and animations.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <a
+                    href="https://pawsomwecare.vercel.app/"
+                    class="btn btn-primary btn-sm"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="https://github.com/fgswania/PawsomeCare.git"
+                    class="btn btn-outline-secondary btn-sm"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- View More Projects Button -->
+        <div class="text-center mt-5">
+          <a
+            href="https://github.com/fgswania?tab=repositories"
+            class="btn btn-primary px-4 py-2">View More Projects on GitHub </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-dark-subtle mt-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-12 mt-5">Get In Touch</h2>
+        <div class="row">
+          <div class="col-lg-5 mb-8 mb-lg-0">
+            <div class="skill-card h-100 p-5">
+              <h4 class="mb-4">Contact Information</h4>
+              <div class="d-flex align-items-start mb-6">
+                <i class="fas fa-map-marker-alt text-primary mt-1 me-3"></i>
+                <div>
+                  <h6 class="fw-bold">Location</h6>
+                  <p class="mb-0">Pakistan</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-6">
+                <i class="fas fa-envelope text-primary mt-1 me-3"></i>
+                <div>
+                  <h6 class="fw-bold">Email</h6>
+                  <p class="mb-0">waniaanjumm@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h6 class="fw-bold mb-4">Follow Me</h6>
+                <div class="d-flex gap-3">
+                  <a href="https://github.com/fgswania/" class="social-icon"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                  <a href="https://www.linkedin.com/in/wania-baig-506b8731a/" class="social-icon"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/xldpdlyd"
+              method="POST"
+            >
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Name"
+                    required
+                    name="name"
+                  />
+                </div>
+                <div class="col-md-6 mb-4">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                    required
+                    name="email"
+                  />
+                </div>
+              </div>
+              <div class="mb-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Subject"
+                  name="subject"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <textarea
+                  class="form-control"
+                  rows="6"
+                  placeholder="Your Message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-6">
+      <div class="container text-center">
+        <p>&copy; 2025 Wania.</p>
+        <div class="mt-5">
+          <a href="https://github.com/fgswania/" class="text-white mx-2"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/wania-baig-506b8731a/" class="text-white mx-2"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("shadow-lg");
+        } else {
+          navbar.classList.remove("shadow-lg");
+        }
+      });
+    </script>
+  </body>
+</html>
